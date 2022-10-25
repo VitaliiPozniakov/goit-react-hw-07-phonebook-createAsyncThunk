@@ -47,7 +47,7 @@ export const addContact = createAsyncThunk(
 
 
 
-export const removeBook = createAsyncThunk(
+export const removeContact = createAsyncThunk(
     "contacts/remove",
     async(id, {rejectWithValue}) => {
         try {

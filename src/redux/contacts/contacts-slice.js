@@ -1,50 +1,50 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchBooks, addBook, removeBook } from "./books-operation";
+import { fetchContacts, addContact, removeContact } from "./books-operation";
 
 const initialState = {
     items: [],
-    loading: false,
+    isLoading: false,
     error: null,
 }
 
-const booksSlice = createSlice({
-    name: "books",
+const contactsSlice = createSlice({
+    name: "contacts",
     initialState,
     extraReducers: {
-        [fetchBooks.pending]: (store) => {
-            store.loading = true;
+        [fetchContacts.pending]: (store) => {
+            store.isLoading = true;
         },
-        [fetchBooks.fulfilled]: (store, {payload}) => {
-            store.loading = false;
+        [fetchContacts.fulfilled]: (store, {payload}) => {
+            store.isLoading = false;
             store.items = payload;
         },
-        [fetchBooks.rejected]: (store, {payload}) => {
-            store.loading = true;
+        [fetchContacts.rejected]: (store, {payload}) => {
+            store.isLoading = true;
             store.error = payload;
         },
-        [addBook.pending]: (store) => {
-            store.loading = true;
+        [addContact.pending]: (store) => {
+            store.isLoading = true;
         },
-        [addBook.fulfilled]: (store, {payload}) => {
-            store.loading = false;
+        [addContact.fulfilled]: (store, {payload}) => {
+            store.isLoading = false;
             store.items.push(payload)
         },
-        [addBook.rejected]: (store, {payload}) => {
-            store.loading = false;
+        [addContact.rejected]: (store, {payload}) => {
+            store.isLoading = false;
             store.error = payload;
         },
-        [removeBook.pending]: (store) => {
-            store.loading = true;
+        [removeContact.pending]: (store) => {
+            store.isLoading = true;
         },
-        [removeBook.fulfilled]: (store, {payload}) => {
-            store.loading = false;
+        [removeContact.fulfilled]: (store, {payload}) => {
+            store.isLoading = false;
             store.items = store.items.filter(item => item.id !== payload)
         },
-        [removeBook.rejected]: (store, {payload}) => {
-            store.loading = false;
+        [removeContact.rejected]: (store, {payload}) => {
+            store.isLoading = false;
             store.error = payload;
         },
     }
 })
 
-export default booksSlice.reducer;
+export default contactsSlice.reducer;
