@@ -1,7 +1,7 @@
 import { getFilter } from '../../redux/filter/filter-selectors';
 
-export const getContacts = ({contacts}) => contacts.items;
-// export const getContacts = state => state.contacts.contacts;
+export const getContacts = ({contacts}) => contacts?.items;
+// export const getContacts = state => state.contacts.items;
 export const getState = ({contacts}) => ({isLoading: contacts.isLoading, error: contacts.error});
 
 
