@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instanceBooks = axios.create({
     // baseURL: "https://6356dec49243cf412f8f494e.mockapi.io/api/books",
-    baseURL: "https://6356dec49243cf412f8f494e.mockapi.io/api/books",
+    baseURL: "https://62d69e8549c87ff2af288379.mockapi.io",
     // params: {
     //     _limit: 12,
     // }
