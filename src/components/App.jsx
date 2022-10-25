@@ -21,7 +21,7 @@ export default function App() {
 
   const dispatch = useDispatch();
 
-  console.log(fetchContacts)
+  // console.log(fetchContacts)
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
