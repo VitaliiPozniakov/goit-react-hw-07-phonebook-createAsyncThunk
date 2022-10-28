@@ -6,10 +6,7 @@ import { Container } from './App.styled';
 import Notification from './Notification';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import {
-  fetchContacts,
-  addContact,
-} from '../redux/contacts/contacts-operations';
+import { fetchContacts } from '../redux/contacts/contacts-operations';
 import { getContacts } from '../redux/contacts/contacts-selectors';
 import { useDispatch } from 'react-redux';
 
@@ -26,18 +23,18 @@ export default function App() {
   const contacts = useSelector(getContacts);
   const isLoading = useSelector(getIsLoading);
 
-  const onAddContact = contact => {
-    const action = addContact(contact);
-    dispatch(action);
-  };
+  // const onAddContact = contact => {
+  //   const action = addContact(contact);
+  //   dispatch(action);
+  // };
 
   return (
     <Container>
       <Section title="Phonebook">
-        <ContactForm createContact={onAddContact} />
+        <ContactForm />
       </Section>
 
-      {isLoading && <Loader/>}
+      {isLoading && <Loader />}
 
       <Section title="Contacts">
         {contacts && contacts.length > 0 && <Filter />}

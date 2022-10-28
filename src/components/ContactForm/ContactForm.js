@@ -5,6 +5,8 @@ import * as yup from 'yup';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { getContacts } from '../../redux/contacts/contacts-selectors';
 import { useSelector } from 'react-redux';
+import { addContact } from '../../redux/contacts/contacts-operations';
+import { useDispatch } from 'react-redux';
 
 const schema = yup.object().shape({
   name: yup
@@ -23,6 +25,12 @@ const initialValues = {
 };
 
 const ContactForm = ({ createContact }) => {
+  const dispatch = useDispatch();
+
+  const onAddContact = contact => {
+    const action = addContact(contact);
+    dispatch(action);
+  };
 
   const contacts = useSelector(getContacts);
 
@@ -44,7 +52,7 @@ const ContactForm = ({ createContact }) => {
     } else if (checkRepeatPhone(phone)) {
       Notify.warning(`Contact with phone "${phone}" is already in phonebook`);
     } else {
-      createContact({ name, phone });
+      onAddContact({ name, phone });
     }
 
     actions.resetForm();
