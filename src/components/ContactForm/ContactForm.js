@@ -3,6 +3,8 @@ import css from './ContactForm.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { getContacts } from '../../redux/contacts/contacts-selectors';
+import { useSelector } from 'react-redux';
 
 const schema = yup.object().shape({
   name: yup
@@ -20,7 +22,10 @@ const initialValues = {
   phone: '',
 };
 
-const ContactForm = ({ contacts, createContact }) => {
+const ContactForm = ({ createContact }) => {
+
+  const contacts = useSelector(getContacts);
+
   const checkRepeatName = name => {
     return contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()

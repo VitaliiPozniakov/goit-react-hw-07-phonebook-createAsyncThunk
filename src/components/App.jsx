@@ -34,7 +34,7 @@ export default function App() {
   return (
     <Container>
       <Section title="Phonebook">
-        <ContactForm contacts={contacts} createContact={onAddContact} />
+        <ContactForm createContact={onAddContact} />
       </Section>
 
       {isLoading && <Loader/>}
